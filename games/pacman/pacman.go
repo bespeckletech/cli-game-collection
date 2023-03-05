@@ -1,7 +1,6 @@
 package pacman
 
 import (
-	"bufio"
 	"bytes"
 	"encoding/json"
 	"flag"
@@ -17,8 +16,21 @@ import (
 	"github.com/danicat/simpleansi"
 )
 
+var data = map[string]interface{}{
+	"player": "😃",
+	"ghost": "👻",
+	"ghost_blue": "🥶",
+	"wall": "  ",
+	"dot": "▫️ ",
+	"pill": "💊",
+	"death": "💀",
+	"space": "  ",
+	"use_emoji": true,
+	"pill_duration_secs": 10,
+},
+
+configFile,_:= json.Marshal(data)
 var (
-	configFile = flag.String("config-file", "./config.json", "path to custom configuration file")
 	mazeFile   = flag.String("maze-file", "./maze01.txt", "path to a custom maze file")
 )
 
@@ -82,17 +94,45 @@ func loadConfig(file string) error {
 }
 
 func loadMaze(file string) error {
-	f, err := os.Open(file)
-	if err != nil {
-		return err
-	}
-	defer f.Close()
+	// f, err := os.Open(file)
+	// if err != nil {
+	// 	return err
+	// }
+	// defer f.Close()
 
-	scanner := bufio.NewScanner(f)
-	for scanner.Scan() {
-		line := scanner.Text()
-		maze = append(maze, line)
+	// scanner := bufio.NewScanner(f)
+	maze := [25]string{
+		"############################",
+		"#............##............#",
+		"#.####.#####.##.#####.####.#",
+		"#X####.#####.##.#####.####X#",
+		"#..........................#",
+		"#.####.##.########.##.####.#",
+		"#......##....##....##......#",
+		"######.##### ## #####.######",
+		"     #.##          ##.#     ",
+		"     #.## ###--### ##.#     ",
+		"######.## # GGGG # ##.######",
+		"      .   # GGGG #   .      ",
+		"######.## # GGGG # ##.######",
+		"     #.## ######## ##.#     ",
+		"     #.##    P     ##.#     ",
+		"######.## ######## ##.######",
+		"#............##............#",
+		"#.####.#####.##.#####.####.#",
+		"#X..##................##..X#",
+		"###.##.##.########.##.##.###",
+		"#......##....##....##......#",
+		"#.##########.##.##########.#",
+		"#..........................#",
+		"############################",
 	}
+	// line =
+	// for scanner.Scan() {
+	// 	line := scanner.Text()
+	// 	// print(line)
+	// 	maze = append(maze, line)
+	// }
 
 	for row, line := range maze {
 		for col, char := range line {
