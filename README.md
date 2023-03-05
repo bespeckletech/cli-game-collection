@@ -15,4 +15,4 @@ TimeLine
  It took us many discussions, brainstorming and less than two days time to get where we have reached. 
  The game is completely functional but sometimes the game doesn't run which happens randomly that we're only currently trying to decode
 
- Also, we are yet to setup the case where non tech-savvy users can use this with 'bored' command.
+ Also, we are yet to setup the case where non tech-savvy users can use this with 'bored' command in any platform.
