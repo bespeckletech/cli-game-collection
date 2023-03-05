@@ -11,7 +11,7 @@ import (
 
 func main() {
 	min := 1
-	max := 5
+	max := 4
 	var gameselection int
 	rand.Seed(time.Now().UnixNano())
 	gameselection = rand.Intn(max-min) + min
