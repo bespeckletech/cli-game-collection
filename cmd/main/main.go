@@ -2,7 +2,6 @@ package main
 
 import (
 	"bored/games"
-	"bored/games/pacman"
 	"bored/games/snake"
 	"bored/games/tetris"
 	"math/rand"
@@ -10,7 +9,7 @@ import (
 )
 
 func main() {
-	min := 1
+	min := 0
 	max := 4
 	var gameselection int
 	rand.Seed(time.Now().UnixNano())
@@ -25,7 +24,8 @@ func main() {
 		snake.NewGame().Start()
 		break
 	case 2:
-		pacman.Start()
+		// pacman.Start()
+		println("Under process")
 		break
 	case 3:
 		tetris.Start()
